@@ -5,6 +5,14 @@
   "newProjectRoot": "projects",
   "projects": {
     "ngx-i18nsupport": {
+      "i18n": {
+        "locales": {
+          "de": {
+            "translation": "src/i18n/messages.de.xlf",
+            "baseHref": ""
+          }
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -14,6 +22,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "aot": true,
             "outputPath": "dist/ngx-i18nsupport",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -30,6 +39,12 @@
           },
           "configurations": {
             "production": {
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -48,9 +63,14 @@
             },
             "de": {
               "aot": true,
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
               "outputPath": "dist/ngx-i18nsupport",
               "i18nFile": "src/i18n/messages.de.xlf",
-              "i18nFormat": "xlf",
               "i18nLocale": "de"
             }
           }
@@ -151,7 +171,12 @@
             "tsConfig": "projects/tooling/tsconfig.lib.json",
             "project": "projects/tooling/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/tooling/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -186,7 +211,12 @@
             "tsConfig": "projects/ngx-i18nsupport-lib/tsconfig.lib.json",
             "project": "projects/ngx-i18nsupport-lib/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-i18nsupport-lib/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -221,7 +251,12 @@
             "tsConfig": "projects/xliffmerge/tsconfig.lib.json",
             "project": "projects/xliffmerge/ng-package.json"
           }
-        },
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/xliffmerge/tsconfig.lib.prod.json"
+            }
+          }
+},
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -245,6 +280,26 @@
       }
     },
     "tiny-translator": {
+      "i18n": {
+        "locales": {
+          "en": {
+            "translation": "projects/tiny-translator/src/i18n/messages.en.xlf",
+            "baseHref": "/tiny-translator/en/"
+          },
+          "de": {
+            "translation": "projects/tiny-translator/src/i18n/messages.de.xlf",
+            "baseHref": "/tiny-translator/de/"
+          },
+          "fr": {
+            "translation": "projects/tiny-translator/src/i18n/messages.fr-google.xlf",
+            "baseHref": "/tiny-translator/fr-google/"
+          },
+          "ru": {
+            "translation": "projects/tiny-translator/src/i18n/messages.ru-google.xlf",
+            "baseHref": "/tiny-translator/ru-google/"
+          }
+        }
+      },
       "root": "projects/tiny-translator/",
       "sourceRoot": "projects/tiny-translator/src",
       "projectType": "application",
@@ -254,6 +309,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "aot": true,
             "outputPath": "dist/tiny-translator",
             "index": "projects/tiny-translator/src/index.html",
             "main": "projects/tiny-translator/src/main.ts",
@@ -291,43 +347,65 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ],
 			  "serviceWorker": true
             },
             "en": {
               "aot": true,
-              "baseHref": "/tiny-translator/en/",
-              "outputPath": "dist/tiny-translator/en",
-              "i18nFile": "projects/tiny-translator/src/i18n/messages.en.xlf",
-              "i18nFormat": "xlf",
-              "i18nLocale": "en",
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
+            "localize": [
+              "en"
+            ],
+              "outputPath": "dist/tiny-translator",
               "serviceWorker": true
             },
             "de": {
               "aot": true,
-              "baseHref": "/tiny-translator/de/",
-              "outputPath": "dist/tiny-translator/de",
-              "i18nFile": "projects/tiny-translator/src/i18n/messages.de.xlf",
-              "i18nFormat": "xlf",
-              "i18nLocale": "de",
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
+            "localize": [
+              "de"
+            ],
+              "outputPath": "dist/tiny-translator",
               "serviceWorker": true
             },
             "fr-google": {
               "aot": true,
-              "baseHref": "/tiny-translator/fr-google/",
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
               "outputPath": "dist/tiny-translator/fr-google",
               "i18nFile": "projects/tiny-translator/src/i18n/messages.fr-google.xlf",
-              "i18nFormat": "xlf",
               "i18nLocale": "fr",
               "serviceWorker": true
             },
             "ru-google": {
               "aot": true,
-              "baseHref": "/tiny-translator/ru-google/",
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
               "outputPath": "dist/tiny-translator/ru-google",
               "i18nFile": "projects/tiny-translator/src/i18n/messages.ru-google.xlf",
-              "i18nFormat": "xlf",
               "i18nLocale": "ru",
               "serviceWorker": true
             }
